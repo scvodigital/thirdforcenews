@@ -1,0 +1,44 @@
+{{#json}}
+  {{#json key="dataComment"}}
+    {{#json key="description" type="string"~}}
+      This is an export of your Third Force News account data.
+    {{~/json}},
+    {{#json key="location" type="string"~}}
+      Google Cloud Platform
+    {{~/json}}
+  {{/json}},
+
+  {{#json key="user"}}
+    {{#json key="dataComment"}}
+      {{#json key="description" type="string"~}}
+        This is all the information stored about you for the purposes of authentication
+        and other information you have chosen to save.
+      {{~/json}},
+      {{#json key="location" type="string"~}}
+        Google Firebase
+      {{~/json}}
+    {{/json}},
+
+    {{{json key="email" value=@root.data.auth.email}}},
+    {{{json key="emailVerified" value=@root.data.auth.emailVerified}}},
+    {{{json key="metadata" value=@root.data.auth.metadata}}},
+  {{/json}},
+
+  {{#json key="profile"}}
+    {{#json key="dataComment"}}
+      {{#json key="description" type="string"~}}
+        This is all the information stored about you that was collected when you first
+        signed up for your Third Force News account. This information is used to help
+        us understand who is using each of the Third Force News websites.
+      {{~/json}},
+      {{#json key="location" type="string"~}}
+        Google Firebase Real-Time Database
+      {{~/json}}
+    {{/json}},
+
+    {{{json key="organisation" value=(default @root.data.profile.organisation "none")}}},
+    {{{json key="postcode" value=(default @root.data.profile.postcode "none")}}},
+  {{/json}},
+
+  {{{json key="exported" value=(momentFormat (moment null "x") "YYYY-MM-DD HH:mm:SS")}}}
+{{/json}}

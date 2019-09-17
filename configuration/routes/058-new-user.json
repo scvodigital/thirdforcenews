@@ -1,0 +1,27 @@
+{
+  "name": "new-user",
+  "debug": false,
+  "pattern": "/new-user",
+  "acceptedVerbs": "GET",
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "user-profile",
+      "taskModule": "firebaseRtbSet",
+      "config": {
+        "appName": "thirdforcenews",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/",
+        "setOrUpdate": "set",
+        "dataTemplate": "{ \"organisation\": {{{stringify (default @root.request.query.params.organisation 'None')}}}, \"postcode\": {{{stringify (default @root.request.query.params.postcode 'None')}}} }"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">request.headers.referer"
+      }
+    }
+  ]
+}

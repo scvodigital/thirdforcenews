@@ -1,0 +1,22 @@
+<div class="mdc-drawer__content">
+  <h3 class="mdc-typography--headline6">
+    Account
+  </h3>
+  <nav class="mdc-list">
+    {{#withExtend this toHide=(split
+      (concat
+        "Home,Sign out"
+      ) ",")}}
+      {{#each @root.context.metaData.menus.user-signed-in ~}}
+        {{#unless (contains ../toHide label)}}
+          <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
+            {{#if icon ~}}
+            <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
+            {{/if ~}}
+            {{{label}}}
+          </a>
+        {{/unless}}
+      {{/each ~}}
+    {{/withExtend}}
+  </nav>
+</div>

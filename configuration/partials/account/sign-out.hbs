@@ -1,0 +1,14 @@
+{{> account_sign_out_loader message="Signing out&hellip;"}}
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  window.setTimeout(function() {
+    thirdforcenews.auth.sessionCleanup().then(function() {
+      thirdforcenews.setCookie('tfn_token');
+      thirdforcenews.setCookie('tfn_cookie');
+      window.location.href = '/';
+    }).catch(function(err) {
+      console.error('Error signing out:', err);
+    });
+  }, 1000);
+});
+</script>

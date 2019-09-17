@@ -1,0 +1,34 @@
+{
+  "domains": [
+    "thirdforcenews.local",
+    "thirdforcenews.scot",
+    "test.thirdforcenews.scot",
+    "thirdforcenews.org.uk"
+  ],
+  "routes": [
+    "{:./routes/*.json}"
+  ],
+  "metaData": {
+    "assetsVersion": "{:../package.json@version}",
+    "assetsBase": "https://storage.googleapis.com/scvo-assets/test/thirdforcenews/",
+    "title": "Third Force News",
+    "menus": "{:./data/menus.json}",
+    "categories": "{:./data/categories.json}",
+    "elasticsearchUrl": "{$./data/elasticsearch-url.txt}",
+    "handlebars": {
+      "partials": {
+        "{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
+      },
+      "templates": {
+        "{$./templates/**/*.*}": ""
+      },
+      "layouts": {
+        "{$./layouts/**/*.*}": ""
+      },
+      "queries": {
+        "{$./queries/**/*.*}": ""
+      }
+    },
+    "commonTasks": "{:./data/common-tasks.json}"
+  }
+}

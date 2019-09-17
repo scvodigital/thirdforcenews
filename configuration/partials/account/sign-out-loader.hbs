@@ -1,0 +1,15 @@
+<form id="sign-out-form" method="POST" class="sign-in-form sign-out-form">
+  <div class="mdc-card mdc-elevation--z0 v-margin-full">
+    {{#if message ~}}
+    <div class="mdc-typography--headline5 text-centre v-margin-full">
+      {{{message}}}
+    </div>
+    {{else}}
+    <div class="card-loader" id="sign-out-loader">
+      <div class="card-loader-inner">
+        <span class="far fa-2x fa-spinner-third fa-spin"></span>
+      </div>
+    </div>
+    {{/if ~}}
+  </div>
+</form>

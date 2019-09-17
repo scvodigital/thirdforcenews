@@ -1,0 +1,29 @@
+{{#json}}
+  {{{json key="size" value=1}}},
+  {{#json key="_source" type="array"}}
+    "wpid",
+    "slug",
+    "title",
+    "sub_title",
+    "og_title",
+    "content",
+    "breadcrumb",
+    "categories_id",
+    "categories_slug",
+    "author",
+    "header_background",
+    "header_text",
+    "hide_overlay"
+  {{/json}},
+  {{#json key="query"}}
+    {{#json key="bool"}}
+      {{#json key="filter" type="array"}}
+        {{#json}}
+          {{#json key="term"}}
+            {{{json key="slug" value=@root.request.params.path}}}
+          {{/json}}
+        {{/json}}
+      {{/json}}
+    {{/json}}
+  {{/json}}
+{{/json}}

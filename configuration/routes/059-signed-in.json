@@ -1,0 +1,36 @@
+{
+  "name": "signed-in",
+  "debug": false,
+  "pattern": "/signed-in",
+  "acceptedVerbs": "GET",
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "user-profile",
+      "taskModule": "firebaseRtbSet",
+      "config": {
+        "appName": "thirdforcenews",
+        "pathTemplate": "/users/{{default data.auth.uid 'no-such-profile'}}/accessed",
+        "setOrUpdate": "set",
+        "dataTemplate": "{{moment null 'x'}}"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "redirectUrl",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "{{default @root.request.params.query.referer '/'}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.redirectUrl"
+      }
+    }
+  ]
+}

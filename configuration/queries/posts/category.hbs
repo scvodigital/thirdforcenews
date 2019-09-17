@@ -1,0 +1,28 @@
+{{#json}}
+  {{#json key="size" type="number"}}
+    10
+  {{/json}},
+  "from": {{multiply (subtract (default @root.request.params.query.page 1) 1) 10}},
+  {{#json key="_source" type="array"}}
+    "Id",
+    "url",
+    "title",
+    "og_title",
+    "description",
+    "categories_slugs"
+  {{/json}},
+  {{#json key="query"}}
+    {{#json key="bool"}}
+      {{#json key="filter" type="array"}}
+        {{#json}}
+          {{#json key="term"}}
+            {{{json key="categories_slugs" value=(replace @root.request.params.path "-and-" "-")}}}
+          {{/json}}
+        {{/json}}
+      {{/json}}
+    {{/json}}
+  {{/json}},
+  {{#json key="sort"}}
+    {{{json key="publish_on" value="desc"}}}
+  {{/json}}
+{{/json}}

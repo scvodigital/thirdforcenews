@@ -1,0 +1,148 @@
+<script src="{{~>asset_url url='downloader.js'~}}"></script>
+<script>
+  function exportUserData() {
+    var dataUrl = 'data:application/json;base64,{{{btoa @root.data.export_user_data}}}';
+    download(dataUrl, 'user-export.json', 'application/json');
+  };
+  $(document).ready(function() {
+    var $changePassword = $('#change-password');
+    var $currentPassword = $('#change-password-current');
+    var $password1 = $('#change-password-password');
+    var $password2 = $('#change-password-confirm');
+
+    $changePassword.on('click', changePassword);
+    $currentPassword.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        $password1.focus();
+      }
+    });
+    $password1.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        $password2.focus();
+      }
+    });
+    $password2.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        changePassword();
+      }
+    });
+
+    function changePassword() {
+      var current = $currentPassword.val();
+      var password1 = $password1.val();
+      var password2 = $password2.val();
+      thirdforcenews.disable([$changePassword, $currentPassword, $password1, $password2]);
+
+      thirdforcenews.auth.changePassword(password1, password2, current).then(function() {
+        thirdforcenews.snackbar.show({
+          message: 'Password changed',
+        });
+        thirdforcenews.disable([$changePassword, $currentPassword, $password1, $password2], false);
+        $password1.val('');
+        $password2.val('');
+        $currentPassword.val('');
+      }).catch(function(err) {
+        thirdforcenews.disable([$changePassword, $currentPassword, $password1, $password2], false);
+        $password1.val('');
+        $password2.val('');
+        $currentPassword.val('');
+        $currentPassword.focus();
+        thirdforcenews.snackbar.show({
+          message: err.message || 'There was a problem changing your password'
+        });
+        return;
+      });
+    }
+
+    var $changeEmailPassword = $('#change-email-password');
+    var $changeEmailNew = $('#change-email-new');
+    var $changeEmailConfirm = $('#change-email-confirm');
+    var $changeEmail = $('#change-email');
+
+    $changeEmail.on('click', changeEmail);
+    $changeEmailPassword.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        $changeEmailNew.focus();
+      }
+    });
+    $changeEmailNew.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        $changeEmailConfirm.focus();
+      }
+    });
+    $changeEmailConfirm.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        changeEmail();
+      }
+    });
+
+    function changeEmail() {
+      var currentPassword = $changeEmailPassword.val();
+      var emailNew = $changeEmailNew.val();
+      var emailConfirm = $changeEmailConfirm.val();
+      thirdforcenews.disable([$changeEmailPassword, $changeEmailNew, $changeEmailConfirm, $changeEmail]);
+      thirdforcenews.auth.changeEmail(emailNew, emailConfirm, currentPassword).then(function() {
+        thirdforcenews.snackbar.show({
+          message: 'Email address changed',
+        });
+        thirdforcenews.disable([$changeEmailPassword, $changeEmailNew, $changeEmailConfirm, $changeEmail], false);
+        $changeEmailNew.val('');
+        $changeEmailConfirm.val('');
+        $changeEmailPassword.val('');
+      }).catch(function(err) {
+        thirdforcenews.disable([$changeEmailPassword, $changeEmailNew, $changeEmailConfirm, $changeEmail], false);
+        $changeEmailNew.val('');
+        $changeEmailConfirm.val('');
+        $changeEmailPassword.val('');
+        $changeEmailPassword.focus();
+        thirdforcenews.snackbar.show({
+          message: err.message || 'There was a problem changing your email address'
+        });
+        return;
+      });
+    }
+
+    var $deleteAccountPassword = $('#delete-account-password');
+    var $deleteAccount = $('#delete-account');
+
+    $deleteAccount.on('click', deleteAccount);
+    $deleteAccountPassword.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        deleteAccount();
+      }
+    });
+
+    function deleteAccount() {
+      var password = $deleteAccountPassword.val();
+      thirdforcenews.disable([$deleteAccount, $deleteAccountPassword]);
+      thirdforcenews.auth.reauthenticate(password).then(function() {
+        thirdforcenews.snackbar.show({
+          message: 'Password verified, deleting account',
+        });
+        setTimeout(function() {
+          window.location.href = '/delete-user';
+        }, 1000);
+      }).catch(function(err) {
+        thirdforcenews.disable([$deleteAccount, $deleteAccountPassword], false);
+        $deleteAccountPassword.val('');
+        $deleteAccountPassword.focus();
+        thirdforcenews.snackbar.show({
+          message: err.message || 'There was a problem verifying your password'
+        });
+        return;
+      });
+    }
+
+    $profileForm = $('#profile-form');
+    $profileOrganisation = $('#profile-organisation');
+    $profilePostcode = $('#profile-postcode');
+    $profileUpdate = $('#profile-update');
+
+    $profileOrganisation.on('keypress', function(evt) {
+      if (evt.which === 13) {
+        $profilePostcode.focus();
+        evt.preventDefault();
+      }
+    });
+  });
+</script>

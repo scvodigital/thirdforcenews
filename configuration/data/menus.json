@@ -1,0 +1,56 @@
+{
+  "main": [
+    {
+      "label": "Latest news",
+      "icon": "list",
+      "path": "/news",
+      "route": "^/news"
+    },
+    {
+      "label": "Events",
+      "icon": "list",
+      "path": "/events",
+      "route": "^/events"
+    },
+    {
+      "label": "Suppliers",
+      "icon": "list",
+      "path": "/suppliers",
+      "route": "^/suppliers"
+    }
+  ],
+  "user-signed-in": [
+    {
+      "label": "Home",
+      "icon": "home",
+      "path": "/",
+      "route": "^/$"
+    },
+    {
+      "label": "Settings",
+      "icon": "cog",
+      "path": "/settings",
+      "route": "^/settings"
+    },
+    {
+      "label": "Sign out",
+      "icon": "sign-out-alt",
+      "path": "/sign-out",
+      "route": "^/sign-out"
+    }
+  ],
+  "user-not-signed-in": [
+    {
+      "label": "Sign in",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "list-alt",
+      "path": "/sign-up",
+      "route": "^/sign-up"
+    }
+  ]
+}

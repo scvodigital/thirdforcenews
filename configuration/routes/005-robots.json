@@ -1,0 +1,29 @@
+{
+  "name": "robots",
+  "debug": false,
+  "pattern": "/robots.txt",
+  "tasks": [
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "data"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "data": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.robots"
+            },
+            "contentType": "text/plain"
+          }
+        }
+      }
+    }
+  ]
+}

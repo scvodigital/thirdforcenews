@@ -1,0 +1,50 @@
+{
+  "funding-finance": {
+    "label": "Funding & Finance",
+    "icon": "list",
+    "path": "/funding-and-finance",
+    "route": "^/funding-and-finance"
+  },
+  "management": {
+    "label": "Management",
+    "icon": "list",
+    "path": "/management",
+    "route": "^/management"
+  },
+  "environment-international": {
+    "label": "Environment & International",
+    "icon": "list",
+    "path": "/environment-and-international",
+    "route": "^/environment-and-international"
+  },
+  "regeneration-housing": {
+    "label": "Regeneration & Housing",
+    "icon": "list",
+    "path": "/regeneration-and-housing",
+    "route": "^/regeneration-and-housing"
+  },
+  "families-young-people": {
+    "label": "Families & Young People",
+    "icon": "list",
+    "path": "/families-and-young-people",
+    "route": "^/families-and-young-people"
+  },
+  "social-justice-poverty": {
+    "label": "Social Justice & Poverty",
+    "icon": "list",
+    "path": "/social-justice-and-poverty",
+    "route": "^/social-justice-and-poverty"
+  },
+  "health-social-care": {
+    "label": "Health & Social Care",
+    "icon": "list",
+    "path": "/health-and-social-care",
+    "route": "^/health-and-social-care"
+  },
+  "culture-leisure": {
+    "label": "Culture & Leisure",
+    "icon": "list",
+    "path": "/culture-and-leisure",
+    "route": "^/culture-and-leisure"
+  }
+}

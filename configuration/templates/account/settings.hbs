@@ -1,0 +1,188 @@
+<div id="detailed-results-container" class="container-content content-settings settings thirdforcenews-settings">
+  <section class="settings-section settings-email thirdforcenews-settings-email b-padding-full">
+    <h1 class="mdc-typography--headline3">
+      Third Force News settings
+    </h1>
+
+    <p>
+      All emails will be sent to {{@root.data.auth.email}}
+    </p>
+  </section>
+
+  <hr />
+
+  <section class="settings-section settings-email thirdforcenews-settings-email">
+    <h1 class="mdc-typography--headline4">
+      Account settings
+    </h1>
+
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h2 class="mdc-typography--headline5 b-margin-full">
+            Change password
+          </h2>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="password" id="change-password-current" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password-current">
+              Current password
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="password" id="change-password-password" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password-password">
+              New password
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="password" id="change-password-confirm" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password-confirm">
+              Confirm new password
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+          <button class="mdc-button mdc-button--raised mdc-button--change_password mdc-button--fullwidth" id="change-password">
+            <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
+            Change password
+          </button>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h2 class="mdc-typography--headline5 b-margin-full">
+            Change email address
+          </h2>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="password" id="change-email-password" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-email-password">
+              Current password
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="email" id="change-email-new" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-email-new">
+              New email
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="email" id="change-email-confirm" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-email-confirm">
+              Confirm new email
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+          <button class="mdc-button mdc-button--raised mdc-button--change_password mdc-button--fullwidth" id="change-email">
+            <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
+            Change email
+          </button>
+        </div>
+
+        <form id="profile-form" action="/update-profile" method="POST" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h2 class="mdc-typography--headline5 b-margin-full">
+            Update profile information
+          </h2>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="text" id="profile-organisation" name="organisation" class="mdc-text-field__input" data-lpignore="true"
+                autocomplete="off" value="{{@root.data.profile.organisation}}" pattern="[\w\s]+" required />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="profile-organisation">
+              Organisation
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="text" id="profile-postcode" name="postcode" class="mdc-text-field__input" data-lpignore="true"
+                autocomplete="off" value="{{@root.data.profile.postcode}}" pattern="[a-zA-Z0-9\s]{3,4}\s[a-zA-Z0-9\s]{3,4}" required />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="profile-postcode">
+              Postcode
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <button class="mdc-button mdc-button--raised mdc-button--change_password mdc-button--fullwidth" id="profile-update">
+            <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
+            Update profile
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <div class="v-margin-full">
+    <button type="button" class="mdc-button v-padding-full" onclick="$('#advanced-settings').removeClass('hidden'); $(this).hide();">
+      Show advanced settings
+    </button>
+  </div>
+
+  <section class="settings-section content-settings-account settings-account thirdforcenews-settings-account t-padding-full hidden" id="advanced-settings">
+    <h2 class="mdc-typography--headline5">
+      Advanced settings
+    </h2>
+
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h3 class="mdc-typography--headline6 b-margin-full">
+            Your data
+          </h3>
+          <p>
+            You have the right to download any data we have stored in relation to you and your account
+            in a readable format. Third Force News only stores things you have explicitly set
+            such as your profile information. Click the button below to download your data.
+          </p>
+          <button class="mdc-button mdc-button--raised mdc-button--export mdc-button--fullwidth v-margin" onclick="exportUserData()">
+            <span class="far fa-upload mdc-list-item__graphic" aria-hidden="true"></span>
+            Export account settings
+          </button>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+          <h3 class="mdc-typography--headline6 b-margin-full">
+            Delete your account
+          </h3>
+
+          <p>
+            You also have the right to be forgotten by Third Force News. Enter your
+            current password and click the button below and all information we hold about you
+            <strong>on all Third Force News websites</strong>
+            including your login will be deleted from our servers. The only thing that we will
+            retain are records in our email system letting us know not to email you.
+          </p>
+          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+            <input type="password" id="delete-account-password" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="delete-account-password">
+              Current password
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+
+          <button class="mdc-button mdc-button--raised mdc-button--delete mdc-button--fullwidth v-margin" id="delete-account">
+            <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
+            Delete account
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

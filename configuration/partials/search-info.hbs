@@ -1,0 +1,14 @@
+{{#if paging.totalResults ~}}
+<div class="search-info mdc-elevation--z3">
+  <strong>Total results:</strong> {{addCommas paging.totalResults}}
+  {{#compare paging.totalResults ">" 10 ~}} |
+  <strong>Current page:</strong> {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
+  {{/compare ~}}
+</div>
+{{else}}
+{{#ifAny @root.request.params.query.keywords ~}}
+<div class="search-info mdc-elevation--z1">
+  No results could be found, please try a different search query
+</div>
+{{/ifAny ~}}
+{{/if ~}}
